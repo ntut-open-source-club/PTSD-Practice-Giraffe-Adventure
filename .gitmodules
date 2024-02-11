@@ -1,0 +1,4 @@
+[submodule "PTSD"]
+	path = PTSD
+	url = https://github.com/Dragonfly911117/PTSD
+	branch = submodule-ize
