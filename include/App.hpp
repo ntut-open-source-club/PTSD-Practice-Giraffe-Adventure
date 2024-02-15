@@ -6,6 +6,7 @@
 #include "Util/Root.hpp"
 #include "Character.hpp"
 #include "Util/Text.hpp"
+#include "TaskText.hpp"
 
 class App {
 public:
@@ -25,16 +26,6 @@ public:
 
 private:
     void ValidTask();
-
-    static constexpr std::string_view s_PhaseTasks[6] = {
-            "Replace the image of m_giraffe with giraffe.bmp in Resources!",
-            "Make the giraffe move into the red area using the keyboard!",
-            "Design a program to make the chest disappear when the giraffe touches it!",
-            "Write a program to give your bee friend an animation!",
-            "Write a program to open the door when your character touches it!",
-            "Design a program to countdown the ball, then stop the animation after displaying OK"
-    };
-    static constexpr std::string_view s_Validation = "Press Enter to validate";
 
 private:
     enum class Phase {
@@ -58,6 +49,8 @@ private:
     std::shared_ptr<Character> m_Bee;
     std::vector<std::shared_ptr<Character>> m_Doors;
     std::shared_ptr<Character> Ball;
+
+    std::shared_ptr<TaskText> m_TaskText;
 };
 
 #endif

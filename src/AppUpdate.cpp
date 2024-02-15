@@ -20,6 +20,7 @@ void App::ValidTask() {
         case Phase::ABLE_TO_MOVE:
             if (isInsideTheSquare(*m_Giraffe)) {
                 m_Phase = Phase::COLLIDE_DETECTION;
+                m_TaskText->NextPhase();
             } else {
                 LOG_DEBUG("The giraffe is not inside the square");
             }
@@ -30,6 +31,7 @@ void App::ValidTask() {
                     LOG_DEBUG("The giraffe collided with the chest but the chest is still visible");
                 } else {
                     m_Phase = Phase::BEE_ANIMATION;
+                    m_TaskText->NextPhase();
                 }
             } else {
                 LOG_DEBUG("The giraffe is not colliding with the chest");
@@ -39,11 +41,13 @@ void App::ValidTask() {
         case Phase::BEE_ANIMATION:
             //TODO: Add the bee animation validation
             m_Phase = Phase::OPEN_THE_DOORS;
+            m_TaskText->NextPhase();
             break;
 
         case Phase::OPEN_THE_DOORS:
             //TODO: Add the door opening validation
             m_Phase = Phase::COUNTDOWN;
+            m_TaskText->NextPhase();
             break;
 
         case Phase::COUNTDOWN:
