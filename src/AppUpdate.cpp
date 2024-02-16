@@ -12,6 +12,8 @@ void App::ValidTask() {
         case Phase::CHANGE_CHARACTER_IMAGE:
             if (m_Giraffe->GetImagePath() == GA_RESOURCE_DIR"/giraffe.bmp") {
                 m_Phase = Phase::ABLE_TO_MOVE;
+                m_PRM->NextPhase();
+
             } else {
                 LOG_DEBUG("The image is not correct");
             }
@@ -20,7 +22,7 @@ void App::ValidTask() {
         case Phase::ABLE_TO_MOVE:
             if (isInsideTheSquare(*m_Giraffe)) {
                 m_Phase = Phase::COLLIDE_DETECTION;
-                m_TaskText->NextPhase();
+                m_PRM->NextPhase();
             } else {
                 LOG_DEBUG("The giraffe is not inside the square");
             }
@@ -31,7 +33,7 @@ void App::ValidTask() {
                     LOG_DEBUG("The giraffe collided with the chest but the chest is still visible");
                 } else {
                     m_Phase = Phase::BEE_ANIMATION;
-                    m_TaskText->NextPhase();
+                    m_PRM->NextPhase();
                 }
             } else {
                 LOG_DEBUG("The giraffe is not colliding with the chest");
@@ -41,13 +43,13 @@ void App::ValidTask() {
         case Phase::BEE_ANIMATION:
             //TODO: Add the bee animation validation
             m_Phase = Phase::OPEN_THE_DOORS;
-            m_TaskText->NextPhase();
+            m_PRM->NextPhase();
             break;
 
         case Phase::OPEN_THE_DOORS:
             //TODO: Add the door opening validation
             m_Phase = Phase::COUNTDOWN;
-            m_TaskText->NextPhase();
+            m_PRM->NextPhase();
             break;
 
         case Phase::COUNTDOWN:
@@ -60,11 +62,19 @@ void App::ValidTask() {
 
 
 void App::Update() {
-    if (Util::Input::IsKeyPressed(Util::Keycode::RETURN)) {
-        ValidTask();
-    } else if (Util::Input::IsKeyPressed(Util::Keycode::ESCAPE) ||
-               Util::Input::IfExit()) {
+
+    if (Util::Input::IsKeyPressed(Util::Keycode::ESCAPE) ||
+        Util::Input::IfExit()) {
         m_CurrentState = State::END;
     }
+
+    if (m_EnterDown) {
+        if (!Util::Input::IsKeyPressed(Util::Keycode::RETURN)) {
+            m_PRM->NextPhase();
+            ValidTask();
+        }
+    }
+    m_EnterDown = Util::Input::IsKeyPressed(Util::Keycode::RETURN);
+
     m_Root.Update();
 }

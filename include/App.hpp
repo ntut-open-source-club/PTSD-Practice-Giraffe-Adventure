@@ -6,7 +6,7 @@
 #include "Util/Root.hpp"
 #include "Character.hpp"
 #include "Util/Text.hpp"
-#include "TaskText.hpp"
+#include "PhaseResourceManger.hpp"
 
 class App {
 public:
@@ -50,7 +50,9 @@ private:
     std::vector<std::shared_ptr<Character>> m_Doors;
     std::shared_ptr<Character> Ball;
 
-    std::shared_ptr<TaskText> m_TaskText;
+    std::shared_ptr<PhaseResourceManger> m_PRM;
+
+    bool m_EnterDown = false;
 };
 
 #endif
