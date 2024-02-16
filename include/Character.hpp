@@ -27,13 +27,17 @@ public:
 
     void SetPosition(const glm::vec2& Position) { m_Transform.translation = Position; }
 
-    void ResetPosition() { m_Transform.translation = {.5f, .5f}; }
-
-     [[nodiscard]] bool IfCollides(const Character& other) const {(void)other; return false;} // TODO: Implement the collision detection
+    // TODO: Implement the collision detection
+    [[nodiscard]] bool IfCollides(const Character& other) const {
+        (void) other;
+        return false;
+    }
 
     // TODO: Add and implement more methods and properties as needed to finish Giraffe Adventure.
 
 private:
+    void ResetPosition() { m_Transform.translation = {0, 0}; }
+
     std::string m_ImagePath;
 };
 

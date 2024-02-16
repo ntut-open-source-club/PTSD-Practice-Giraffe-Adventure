@@ -19,6 +19,7 @@ public:
         auto temp = std::dynamic_pointer_cast<Util::Text>(m_Drawable);
         temp->SetText(append_string_views(s_PhaseTasks[phase], s_Validation));
     }
+
 private:
     inline static std::string append_string_views(std::string_view sv1, std::string_view sv2) {
         return std::string(sv1) + "\n" + std::string(sv2);

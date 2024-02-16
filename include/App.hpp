@@ -43,7 +43,6 @@ private:
 
     Util::Root m_Root;
 
-    std::shared_ptr<Character> m_Background;
     std::shared_ptr<Character> m_Giraffe;
     std::shared_ptr<Character> m_Chest;
     std::shared_ptr<Character> m_Bee;

@@ -6,7 +6,7 @@ PhaseResourceManger::PhaseResourceManger() {
 }
 
 void PhaseResourceManger::NextPhase() {
-    if (m_Phase == 13) return;
+    if (m_Phase == 7) return;
     m_Background->NextPhase(m_Phase);
-    m_TaskText->NextPhase(m_Phase++ / 2);
+    m_TaskText->NextPhase(m_Phase++);
 }
