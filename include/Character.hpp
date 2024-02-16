@@ -7,8 +7,6 @@
 
 class Character : public Util::GameObject {
 public:
-    Character() : Character(GA_RESOURCE_DIR"/gray.bmp") {};
-
     explicit Character(const std::string& ImagePath);
 
     Character(const Character&) = delete;
