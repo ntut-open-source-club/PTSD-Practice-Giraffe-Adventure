@@ -18,7 +18,7 @@ else()
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_definitions(${PROJECT_NAME} PRIVATE GA_RESOURCE_DIR= "${CMAKE_CURRENT_SOURCE_DIR}/Resources")
+    target_compile_definitions(${PROJECT_NAME} PRIVATE GA_RESOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/Resources")
 else()
     target_compile_definitions(${PROJECT_NAME} PRIVATE GA_RESOURCE_DIR= "${CMAKE_INSTALL_PREFIX}/Resources")
 endif()

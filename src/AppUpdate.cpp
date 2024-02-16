@@ -14,8 +14,9 @@ void App::ValidTask() {
 //            if (m_Giraffe->GetImagePath() == GA_RESOURCE_DIR"/giraffe.png") {
             if (true) {
                 m_Phase = Phase::ABLE_TO_MOVE;
-                m_PRM->NextPhase();
                 m_Giraffe->SetPosition({-112.5f, -140.5f});
+
+                m_PRM->NextPhase();
             } else {
                 LOG_DEBUG("The image is not correct");
             }
@@ -25,8 +26,9 @@ void App::ValidTask() {
             if (isInsideTheSquare(*m_Giraffe)) {
                 m_Phase = Phase::COLLIDE_DETECTION;
                 m_Giraffe->SetPosition({-112.5f, -140.5f});
-                m_PRM->NextPhase();
                 m_Chest->SetVisible(true);
+
+                m_PRM->NextPhase();
             } else {
                 LOG_DEBUG("The giraffe is not inside the square");
             }
@@ -40,9 +42,10 @@ void App::ValidTask() {
                     LOG_DEBUG("The giraffe collided with the chest but the chest is still visible");
                 } else {
                     m_Phase = Phase::BEE_ANIMATION;
-                    m_PRM->NextPhase();
                     m_Giraffe->SetVisible(false);
                     m_Bee->SetVisible(true);
+
+                    m_PRM->NextPhase();
                 }
             } else {
                 LOG_DEBUG("The giraffe is not colliding with the chest");
@@ -56,6 +59,8 @@ void App::ValidTask() {
                 m_Giraffe->SetPosition({-112.5f, -140.5f});
                 m_Giraffe->SetVisible(true);
                 m_Bee->SetVisible(false);
+                std::for_each(m_Doors.begin(), m_Doors.end(), [](const auto& door) { door->SetVisible(true); });
+
                 m_PRM->NextPhase();
             } else {
                 LOG_DEBUG("The bee animation is not correct");
@@ -67,6 +72,8 @@ void App::ValidTask() {
 //            if (AreAllDoorsOpen(m_Doors)) {
             if (true) {
                 m_Phase = Phase::COUNTDOWN;
+                std::for_each(m_Doors.begin(), m_Doors.end(), [](const auto& door) { door->SetVisible(false); });
+
                 m_PRM->NextPhase();
             } else {
                 LOG_DEBUG("The door is not open");
