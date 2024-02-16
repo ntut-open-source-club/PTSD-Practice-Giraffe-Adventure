@@ -7,6 +7,7 @@
 #include "Character.hpp"
 #include "Util/Text.hpp"
 #include "PhaseResourceManger.hpp"
+#include "AnimatedCharacter.hpp"
 
 class App {
 public:
@@ -45,9 +46,10 @@ private:
 
     std::shared_ptr<Character> m_Giraffe;
     std::shared_ptr<Character> m_Chest;
-    std::shared_ptr<Character> m_Bee;
     std::vector<std::shared_ptr<Character>> m_Doors;
-    std::shared_ptr<Character> Ball;
+
+    std::shared_ptr<AnimatedCharacter> m_Bee;
+    std::shared_ptr<AnimatedCharacter> m_Ball;
 
     std::shared_ptr<PhaseResourceManger> m_PRM;
 

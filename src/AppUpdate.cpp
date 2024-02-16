@@ -5,6 +5,7 @@
 #include "Util/Input.hpp"
 #include "Util/Keycode.hpp"
 #include "Util/Logger.hpp"
+#include "Util/Time.hpp"
 
 
 void App::ValidTask() {
@@ -53,7 +54,7 @@ void App::ValidTask() {
             break;
 
         case Phase::BEE_ANIMATION:
-            if (true) {
+            if (m_Bee->IsLooping()) {
                 //TODO: Add the bee animation validation
                 m_Phase = Phase::OPEN_THE_DOORS;
                 m_Giraffe->SetPosition({-112.5f, -140.5f});
@@ -69,21 +70,21 @@ void App::ValidTask() {
             break;
 
         case Phase::OPEN_THE_DOORS:
-//            if (AreAllDoorsOpen(m_Doors)) {
-            if (true) {
+            if (AreAllDoorsOpen(m_Doors)) {
                 m_Phase = Phase::COUNTDOWN;
                 std::for_each(m_Doors.begin(), m_Doors.end(), [](const auto& door) { door->SetVisible(false); });
+                m_Giraffe->SetVisible(false);
 
                 m_PRM->NextPhase();
             } else {
-                LOG_DEBUG("The door is not open");
+                LOG_DEBUG("At least one door is not open");
             }
             break;
 
         case Phase::COUNTDOWN:
-            if (true) {
-                // TODO: Add the countdown validation
-                LOG_DEBUG("Congratulations! You have completed the Giraffe Adventure!");
+            if (m_Ball->IfAnimationEnds()) {
+//            if (true) {
+                LOG_DEBUG("Congratulations! You have completed Giraffe Adventure!");
                 m_CurrentState = State::END;
             }
             break;
@@ -106,6 +107,27 @@ void App::Update() {
         m_Giraffe->SetPosition(m_Giraffe->GetPosition() + glm::vec2(1.0F, 0.0F));
     }
 
+    if (Util::Input::IsKeyPressed(Util::Keycode::A)) {
+        m_Chest->SetVisible(false);
+    }
+    if (Util::Input::IsKeyPressed(Util::Keycode::S)) {
+        m_Chest->SetVisible(true);
+    }
+
+    if (Util::Input::IsKeyPressed(Util::Keycode::D)) {
+        std::for_each(m_Doors.begin(), m_Doors.end(), [](const auto& door) {
+            door->SetImage(
+                    GA_RESOURCE_DIR"/Image/Character/door_open.png");
+        });
+    }
+
+    if (Util::Input::IsKeyPressed(Util::Keycode::F)) {
+        std::for_each(m_Doors.begin(), m_Doors.end(), [](const auto& door) {
+            door->SetImage(
+                    GA_RESOURCE_DIR"/Image/Character/door_close.png");
+        });
+    }
+
 
     if (Util::Input::IsKeyPressed(Util::Keycode::ESCAPE) || Util::Input::IfExit()) {
         m_CurrentState = State::END;
@@ -114,7 +136,6 @@ void App::Update() {
     if (m_EnterDown) {
         if (!Util::Input::IsKeyPressed(Util::Keycode::RETURN)) {
             LOG_DEBUG(glm::to_string(m_Giraffe->GetPosition()));
-
             ValidTask();
         }
     }

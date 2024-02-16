@@ -10,7 +10,7 @@ public:
     TaskText() : GameObject(
             std::make_unique<Util::Text>(GA_RESOURCE_DIR"/Font/Inkfree.ttf", 20,
                                          append_string_views(s_PhaseTasks[0], s_Validation),
-                                         Util::Color(1.0F, 1.0F, 1.0F, 1.0F)),
+                                         Util::Color(0.F, 0.F, 0.F, 1.0F)),
             100) {
         m_Transform.translation = {0.0F, -270.F};
     }
