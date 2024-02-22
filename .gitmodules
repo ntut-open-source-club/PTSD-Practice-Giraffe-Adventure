@@ -1,4 +1,4 @@
 [submodule "PTSD"]
 	path = PTSD
-	url = https://github.com/ntut-open-source-club/practical-tools-for-simple-design/tree/submodule-ized
+	url = https://github.com/ntut-open-source-club/practical-tools-for-simple-design
 	branch = submodule-ize
