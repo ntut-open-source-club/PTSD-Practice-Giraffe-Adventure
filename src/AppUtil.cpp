@@ -7,6 +7,8 @@
  * @note See README.md for the task details.
  */
 void App::ValidTask() {
+    bool isBeeLooping;
+    bool isBeePlaying;
     LOG_DEBUG("Validating the task {}", static_cast<int>(m_Phase));
     switch (m_Phase) {
         case Phase::CHANGE_CHARACTER_IMAGE:
@@ -34,7 +36,7 @@ void App::ValidTask() {
             break;
 
         case Phase::COLLIDE_DETECTION:
-            if (m_Giraffe->IfCollides(*m_Chest)) {
+            if (m_Giraffe->IfCollides(m_Chest)) {
                 if (m_Chest->GetVisibility()) {
                     LOG_DEBUG("The giraffe collided with the chest but the chest is still visible");
                 } else {
@@ -50,7 +52,10 @@ void App::ValidTask() {
             break;
 
         case Phase::BEE_ANIMATION:
-            if (m_Bee->IsLooping()) {
+            isBeeLooping = m_Bee->IsLooping();
+            isBeePlaying = m_Bee->IsPlaying();
+
+            if (isBeeLooping && isBeePlaying) {
                 m_Phase = Phase::OPEN_THE_DOORS;
                 m_Giraffe->SetPosition({-112.5f, -140.5f});
                 m_Giraffe->SetVisible(true);
@@ -59,7 +64,8 @@ void App::ValidTask() {
 
                 m_PRM->NextPhase();
             } else {
-                LOG_DEBUG("The bee animation is not correct");
+                LOG_DEBUG("The bee animation is {} but not {}", isBeeLooping ? "looping" : "playing",
+                          isBeeLooping ? "playing" : "looping");
             }
             break;
 

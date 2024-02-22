@@ -17,6 +17,10 @@ public:
         return std::dynamic_pointer_cast<Util::Animation>(m_Drawable)->GetLooping();
     }
 
+    [[nodiscard]] bool IsPlaying() const {
+        return std::dynamic_pointer_cast<Util::Animation>(m_Drawable)->GetState() == Util::Animation::State::PLAY;
+    }
+
     void SetLooping(bool looping) {
         auto temp = std::dynamic_pointer_cast<Util::Animation>(m_Drawable);
         temp->SetLooping(looping);
