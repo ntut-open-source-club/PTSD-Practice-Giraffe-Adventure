@@ -26,7 +26,7 @@ private:
     }
 
     static constexpr std::string_view s_PhaseTasks[6] = {
-            "Replace the image of m_giraffe with giraffe.bmp in Resources!",
+            "Replace the image of m_giraffe with giraffe.png in Resources!",
             "Make the giraffe move into the red area using the keyboard!",
             "Make the chest disappear when the giraffe touches it!",
             "Write a program to give your bee friend an animation!",
