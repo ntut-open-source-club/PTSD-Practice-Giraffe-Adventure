@@ -85,6 +85,8 @@ void App::ValidTask() {
             if (m_Ball->IfAnimationEnds()) {
                 LOG_DEBUG("Congratulations! You have completed Giraffe Adventure!");
                 m_CurrentState = State::END;
+            } else{
+                LOG_DEBUG("The ball animation is not ended");
             }
             break;
     }
