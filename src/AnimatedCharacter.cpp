@@ -6,6 +6,6 @@ AnimatedCharacter::AnimatedCharacter(const std::vector<std::string>& AnimationPa
 }
 
 bool AnimatedCharacter::IfAnimationEnds() const {
-    auto animation = std::dynamic_pointer_cast<std::shared_ptr<Util::Animation>>(m_Drawable)->get();
+    auto animation = std::dynamic_pointer_cast<Util::Animation>(m_Drawable);
         return animation->GetCurrentFrameIndex() == animation->GetFrameCount() - 1;
 }
