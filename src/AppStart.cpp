@@ -5,7 +5,7 @@
 void App::Start() {
     LOG_TRACE("Start");
 
-    m_Giraffe = std::make_shared<Character>(GA_RESOURCE_DIR"/Image/Character/gray.png");
+    m_Giraffe = std::make_shared<Character>(GA_RESOURCE_DIR"/Image/Character/giraffe.png");
     m_Giraffe->SetPosition({-112.5f, -140.5f});
     m_Giraffe->SetZIndex(50);
     m_Root.AddChild(m_Giraffe);
