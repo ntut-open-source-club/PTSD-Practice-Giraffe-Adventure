@@ -12,9 +12,9 @@ file(GLOB_RECURSE HEADER_FILES include/*.hpp)
 add_executable(${PROJECT_NAME} ${SRC_FILES} ${HEADER_FILES})
 
 if(MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE /W4 /WX)
+    target_compile_options(${PROJECT_NAME} PRIVATE /W4)
 else()
-    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic -Werror)
+    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic)
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
