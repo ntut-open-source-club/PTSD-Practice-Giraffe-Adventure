@@ -8,7 +8,7 @@
 class TaskText : public Util::GameObject {
 public:
     TaskText() : GameObject(
-            std::make_unique<Util::Text>(GA_RESOURCE_DIR"/Font/Inkfree.ttf", 20,
+            std::make_unique<Util::Text>(GA_RESOURCE_DIR"/Font/NotoSans-Regular.ttf", 20,
                                          append_string_views(s_PhaseTasks[0], s_Validation),
                                          Util::Color::FromName(Util::Colors::WHITE)),
             100) {
