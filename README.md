@@ -1,8 +1,6 @@
 # Giraffe Adventure
 
-## Language
-
-- [繁體中文](./dict/chinese.md)
+English | [繁體中文](README.zh-hant.md)
 
 ## Description
 
