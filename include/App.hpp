@@ -3,7 +3,7 @@
 
 #include "pch.hpp" // IWYU pragma: export
 
-#include "Util/Root.hpp"
+#include "Util/Renderer.hpp"
 #include "Character.hpp"
 #include "Util/Text.hpp"
 #include "PhaseResourceManger.hpp"
@@ -42,7 +42,7 @@ private:
     State m_CurrentState = State::START;
     Phase m_Phase = Phase::CHANGE_CHARACTER_IMAGE;
 
-    Util::Root m_Root;
+    Util::Renderer m_Root;
 
     std::shared_ptr<Character> m_Giraffe;
     std::shared_ptr<Character> m_Chest;

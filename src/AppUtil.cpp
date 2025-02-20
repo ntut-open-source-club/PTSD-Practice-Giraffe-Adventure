@@ -1,6 +1,8 @@
 #include "AppUtil.hpp"
 #include "App.hpp"
 
+#include "Util/Logger.hpp"
+
 /**
  * @brief The function to validate the tasks.
  * @warning Do not modify this function.
