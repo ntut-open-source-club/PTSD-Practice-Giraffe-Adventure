@@ -1,11 +1,11 @@
 # Giraffe Adventure
 ## Description
-This is a [PTSD](https://github.com/ntut-open-source-club/practical-tools-for-simple-design) framework practice for students taking OOPL2024F.
+This is a [PTSD](https://github.com/ntut-open-source-club/practical-tools-for-simple-design) framework practice for students taking the OOPL course from NTUT.
 
 ## Installation
 1. Clone the repository
 ```bash
-git clone https://github.com/ntut-open-source-club/PTSD-Practice-Giraffe-Adventure --recursive
+git clone https://github.com/ntut-open-source-club/PTSD-Practice-Giraffe-Adventure
 ```
 ### Post configuration (Optional)
 * Modify [config.hpp](PTSD/include/config.hpp) to set the width and height to 601.
