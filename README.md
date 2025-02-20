@@ -7,11 +7,6 @@ This is a [PTSD](https://github.com/ntut-open-source-club/practical-tools-for-si
 ```bash
 git clone https://github.com/ntut-open-source-club/PTSD-Practice-Giraffe-Adventure
 ```
-### Post configuration (Optional)
-* Modify [config.hpp](PTSD/include/config.hpp) to set the width and height to 601.
-* Modify [config.hpp](PTSD/include/config.hpp) to set the frame rate, which is also the game update rate, to desired value(default is 60).
-* Modify [config.hpp](PTSD/include/config.hpp) to set the game name with desired name.
-
 ## Tasks
 - [ ] Replace the image of m_giraffe with giraffe.png in Resources!,
 - [ ] Make the giraffe move into the red area using the keyboard!
