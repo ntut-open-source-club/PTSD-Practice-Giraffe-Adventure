@@ -3,8 +3,24 @@ project(GiraffeAdventure)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_subdirectory(PTSD)
-add_library(Framework ${PTSD_SRC_FILES} $<TARGET_OBJECTS:PracticalToolsForSimpleDesign>)
+cmake_policy(SET CMP0135 NEW)
+
+include(FetchContent)
+set(FETCHCONTENT_QUIET FALSE)
+
+FetchContent_Declare(
+    ptsd
+
+    URL         https://github.com/ntut-open-source-club/practical-tools-for-simple-design/archive/refs/tags/v0.2.zip
+
+    # Or alternatively if you want to use a specific git commit instead of a release:
+    # GIT_REPOSITORY  https://github.com/ntut-open-source-club/practical-tools-for-simple-design.git
+    # GIT_TAG         <git_tag>
+
+    SOURCE_DIR  ${CMAKE_CURRENT_SOURCE_DIR}/PTSD
+)
+
+FetchContent_MakeAvailable(ptsd)
 
 file(GLOB_RECURSE SRC_FILES src/*.cpp)
 file(GLOB_RECURSE HEADER_FILES include/*.hpp)
@@ -27,11 +43,7 @@ target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${DEPENDENCY_INCLUDE_D
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/PTSD/include)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-target_link_libraries(Framework
-    ${DEPENDENCY_LINK_LIBRARIES}
-)
-
 target_link_libraries(${PROJECT_NAME}
     SDL2::SDL2main
-    Framework
+    PTSD
 )
